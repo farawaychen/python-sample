@@ -13,6 +13,11 @@ python-sample/
 │   ├── __init__.py
 │   ├── 001_hello.py      # 基础打印与 f-string
 │   └── 002_variables.py  # 变量、类型与函数
+├── demos/                # 独立示例项目
+│   └── fastapi_demo/     # FastAPI 笔记 API 示例
+│       ├── __init__.py
+│       ├── app.py        # FastAPI 应用（模型 + 路由 + lifespan）
+│       └── README.md     # 示例说明
 ├── notes/                # 学习笔记
 └── tests/                # 测试文件
 ```
@@ -38,6 +43,22 @@ uv run exercises/002_variables.py
 # 运行工具模块自检
 uv run utils.py
 ```
+
+## 示例项目
+
+### FastAPI 笔记 API
+
+一个使用 [FastAPI](https://fastapi.tiangolo.com/) 构建的内存笔记 API，演示 Pydantic 模型、CRUD、路径/查询参数、lifespan 事件与自动 OpenAPI 文档。
+
+```bash
+# 启动开发服务器
+uv run uvicorn demos.fastapi_demo.app:app --reload
+
+# 打开交互式文档
+# http://127.0.0.1:8000/docs
+```
+
+详见 [`demos/fastapi_demo/README.md`](demos/fastapi_demo/README.md)。
 
 ## 常用 uv 命令
 
