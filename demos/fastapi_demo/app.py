@@ -99,6 +99,10 @@ app = FastAPI(
     description="A minimal in-memory notes API demonstrating FastAPI basics.",
     version="0.1.0",
     lifespan=lifespan,
+    # When served behind a reverse proxy that mounts the app under a
+    # path prefix (e.g. /proxy/8000), set this so the generated
+    # OpenAPI spec and Swagger UI use the correct base URL.
+    # root_path="/proxy/8000",
 )
 
 

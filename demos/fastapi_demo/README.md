@@ -30,6 +30,23 @@ uv run uvicorn demos.fastapi_demo.app:app --reload
 - ReDoc 文档：<http://127.0.0.1:8000/redoc>
 - 健康检查：<http://127.0.0.1:8000/health>
 
+### 通过反向代理访问
+
+如果通过反向代理（如 `code.faraway.dpdns.org/proxy/8000`）访问，
+代理会保留 `/proxy/8000` 路径前缀，导致 Swagger UI 请求
+`/proxy/8000/openapi.json` 而返回 404。
+
+解决方法：在 [`app.py`](app.py) 中取消注释 `root_path` 参数：
+
+```python
+app = FastAPI(
+    ...
+    root_path="/proxy/8000",  # 与代理路径前缀一致
+)
+```
+
+然后重启服务器即可。
+
 也可以直接运行模块：
 
 ```bash
